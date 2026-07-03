@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  /* Breakpoints — mirrors docs/RESPONSIVE_STRATEGY.md's 4-tier system.
+     Mobile is the unprefixed base (320-767px, 4 col / 20px gutter, 16px min). */
+  --breakpoint-tablet: 768px; /* 768-1179px, 8 col, 28-36px gutter */
+  --breakpoint-desktop: 1180px; /* 1180-1439px, 12 col, 48px gutter */
+  --breakpoint-wide: 1440px; /* 1440-1600px, 12 col, 64px gutter */
+
+  /* Brand color ramp — sourced verbatim from RADHA's real, locked brand
+     system (Souvik988/RADHA_UPGRADED_PROJECT_FILES,
+     ADMIN_DASHBOARD_DOCS/02_DASHBOARD_UI_DESIGN.md §2.1), shared across the
+     mobile app and admin dashboard. See docs/DESIGN_SYSTEM.md. Exact real
+     tokens are anchored at 100 (accent-tint), 600 (accent), 700
+     (accent-deep) — every other step is an interpolated fill so the ramp
+     works as a normal Tailwind scale. Components reference these tokens
+     only, never raw hex, so any future refinement stays a one-file change.
+     Orange is the primary accent; keep it to small, confident moments
+     (buttons, active states, focus rings) — "tints whisper, orange speaks." */
+  --color-brand-50: #fff7ed;
+  --color-brand-100: #fed7aa; /* = --accent-tint (real token, exact) */
+  --color-brand-200: #fdba74;
+  --color-brand-300: #fb9b4c;
+  --color-brand-400: #f37316;
+  --color-brand-500: #ee6710;
+  --color-brand-600: #ea580c; /* = --accent (real token, exact) — primary CTA color */
+  --color-brand-700: #9a3412; /* = --accent-deep (real token, exact) — pressed/active */
+  --color-brand-800: #7c2d12;
+  --color-brand-900: #5c2410;
+
+  /* Sparing secondary accent — real token, "very sparing, one info cue
+     only, never a primary accent." Not the site's brand color. */
+  --color-teal: #0d9488;
+
+  /* Semantic states — real tokens. --color-success nudged to the SaaS
+     mockup's exact "Soft Green" swatch (#16A34A) — used on Match/Verified
+     chips throughout the new product-UI card set. */
+  --color-success: #16a34a;
+  --color-warn: #b45309;
+  --color-danger: #b91c1c;
+
+  --color-ink: #1c1917; /* real token — warm near-black, never pure black */
+  --color-ink-muted: #57534e; /* = --ink-soft (real token, exact) */
+  --color-surface: #fffbf5; /* real token — warm cream, never flat white */
+  --color-surface-muted: #f5f1e8; /* = --surface-sunken (real token, exact) */
+  --color-surface-raised: #ffffff; /* = --surface-raised (real token, exact) — cards */
+  --color-surface-inverted: #1a1714; /* real token — warm dark, used sparingly (e.g. BusinessPulse), never pure black */
+  --color-hairline: #e7e1d4; /* real token — borders/dividers */
+  --color-accent: var(--color-brand-600);
+  --color-focus-ring: var(--color-brand-600);
+
+  --shadow-warm: 0 2px 8px rgba(28, 25, 23, 0.06); /* the one warm shadow language — no black shadows, no glow/glass */
+
+  /* Film-credit marquee band. Frozen automatically under reduced motion
+     by the global animation-duration override in @layer base. */
+  --animate-marquee: marquee 36s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Gutter scale matching each responsive tier */
+  --spacing-gutter-mobile: 1.25rem; /* 20px */
+  --spacing-gutter-tablet: 2rem; /* ~32px, midpoint of 28-36px */
+  --spacing-gutter-desktop: 3rem; /* 48px */
+  --spacing-gutter-wide: 4rem; /* 64px */
+}
+
+@layer base {
+  html {
+    /* Belt-and-suspenders: intentionally-scrollable descendants (the
+       Capability Matrix table, mobile card carousels) use their own
+       overflow-x: auto and keep working — this only forecloses the
+       document itself ever gaining a horizontal scrollbar, including from
+       browser scrollWidth quirks around nested auto-overflow containers. */
+    overflow-x: hidden;
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    /* Faint paper grain — called for by the real brand system's canvas
+       spec ("warm cream, faint paper grain"). Static SVG noise, no
+       animation, ~3.5% opacity. Sections with their own background
+       (canvas chapters, dark bands) simply paint over it. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .sr-only-focusable {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only-focusable:focus {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    z-index: 100;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    border-radius: 0.375rem;
+    box-shadow: 0 0 0 2px var(--color-focus-ring);
+  }
+}
