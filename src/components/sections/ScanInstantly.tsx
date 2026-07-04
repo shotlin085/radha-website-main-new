@@ -1,14 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScanResultCard } from "@/components/ui/ScanResultCard";
+import { CinematicFrame } from "@/components/ui/CinematicFrame";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
-import { frameSrc, SEQUENCES } from "@/lib/sequences";
-
-const SEQUENCE = SEQUENCES["02-scan-product-truth"];
 
 // Chapter 2 of 8 — first of the "quick proof" duo (paired tightly with
 // chapter 3, reduced vertical rhythm between them vs. the other chapter
@@ -31,15 +28,14 @@ export function ScanInstantly() {
         </div>
 
         <div className="order-1 tablet:order-2">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-hairline">
-            <Image
-              src={frameSrc("02-scan-product-truth", 60)}
+          <CinematicFrame
+              src="/assets/radha/cinematic-v2/webp/02-scan-instantly.webp"
               alt="A hand holding a phone, scanning a product barcode"
-              fill
-              sizes="(min-width: 768px) 45vw, 90vw"
-              className="object-cover"
-              style={{ objectPosition: `${SEQUENCE.focalX * 100}% 50%` }}
-            />
+              focalX={0.58}
+              priority
+              className="aspect-[4/5]"
+              overlay={
+                <>
             {!prefersReducedMotion ? (
               <motion.div
                 aria-hidden="true"
@@ -66,7 +62,9 @@ export function ScanInstantly() {
                 <ScanResultCard />
               </motion.div>
             </motion.div>
-          </div>
+                </>
+              }
+          />
         </div>
       </Container>
     </section>

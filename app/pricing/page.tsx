@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { LayoutDashboard, ScanLine, Clock, ListChecks } from "lucide-react";
+import { Clock, LayoutDashboard, ListChecks, ScanLine } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AppDownloadBlock } from "@/components/ui/AppDownloadBlock";
 import { DeviceFrame } from "@/components/ui/DeviceFrame";
 import { StoreHealthGauge } from "@/components/ui/StoreHealthGauge";
 import { Icon } from "@/components/ui/Icon";
+import { PageCinematicHero } from "@/components/ui/PageCinematicHero";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Pricing",
-  description: "Simple pricing, built for every Indian retail store — from a single counter to a multi-store chain.",
+  description:
+    "Simple pricing, built for every Indian retail store - from a single counter to a multi-store chain.",
 });
 
 const MOBILE_SCREENS = [
@@ -24,7 +26,19 @@ const MOBILE_SCREENS = [
 
 export default function PricingPage() {
   return (
-    <main id="main-content" className="pt-20">
+    <main id="main-content">
+      <PageCinematicHero
+        eyebrow="Pricing"
+        title="Simple pricing for stores that want real control."
+        description="Pick the plan that matches your current audit load, scan volume, and staff workflow. RADHA grows from one counter to a multi-store operating system."
+        imageSrc="/assets/radha/cinematic-v2/webp/11-pricing-growth.webp"
+        imageAlt="A store owner comparing RADHA pricing and growth plans with Mor, the RADHA peacock mascot."
+        primaryCta={{ href: "#pricing-heading", label: "Compare plans" }}
+        secondaryCta={{ href: "/contact", label: "Ask for guidance" }}
+        proofPoints={["No credit card", "Cancel anytime", "7-day free trial"]}
+        reverse
+        priority
+      />
       <PricingSection />
 
       <section aria-labelledby="pocket-heading" className="bg-surface-muted py-24 tablet:py-32">
@@ -43,7 +57,7 @@ export default function PricingPage() {
             <div className="flex justify-center gap-4">
               <DeviceFrame variant="phone" className="w-40">
                 <StoreHealthGauge score={82} size={80} />
-                <p className="mt-2 text-center text-xs text-ink-muted">₹12,430 today</p>
+                <p className="mt-2 text-center text-xs text-ink-muted">Rs. 12,430 today</p>
               </DeviceFrame>
               <DeviceFrame variant="phone" className="mt-8 w-40">
                 <p className="text-xs font-medium text-ink">Scan &amp; Verify</p>
@@ -72,7 +86,7 @@ export default function PricingPage() {
                   <StoreHealthGauge score={82} size={64} />
                   <div className="grid flex-1 grid-cols-3 gap-2">
                     <div className="rounded-lg bg-surface-raised p-2 text-center">
-                      <p className="font-mono text-sm font-semibold text-ink">₹12,430</p>
+                      <p className="font-mono text-sm font-semibold text-ink">Rs. 12,430</p>
                       <p className="text-[10px] text-ink-muted">Sales</p>
                     </div>
                     <div className="rounded-lg bg-surface-raised p-2 text-center">

@@ -88,7 +88,7 @@ export function ProductMegaPanel() {
           Watch how a real store goes from shelf chaos to store control.
         </p>
         <Button href="/showcase" variant="secondary" className="mt-4 w-full text-xs">
-          Book demo
+          Watch story
         </Button>
       </div>
     </div>

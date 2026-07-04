@@ -99,9 +99,6 @@ export function MobileNav({ open, onClose, links, triggerRef }: MobileNavProps) 
           <Button href="/contact" className="w-full" onClick={onClose}>
             Start with RADHA
           </Button>
-          <Button href="/contact" variant="ghost" className="w-full" onClick={onClose}>
-            Log in
-          </Button>
         </div>
       </nav>
     </div>

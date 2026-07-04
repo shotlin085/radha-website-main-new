@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
 import { CircleCheck } from "lucide-react";
-import { ScrollSequenceCanvas } from "@/components/motion/ScrollSequenceCanvas";
+import { motion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -21,18 +22,47 @@ const CHECKLIST = ["Reports & exports", "Team performance", "Better decisions"];
 export function TakeControlCta() {
   const rail = useProgressRail();
 
+  useEffect(() => {
+    rail?.markComplete(8);
+  }, [rail]);
+
   return (
-    <ScrollSequenceCanvas
-      sequenceId="05-complete-ecosystem"
+    <section
       id="take-control"
-      ariaLabelledBy="take-control-heading"
-      onSectionComplete={() => rail?.markComplete(8)}
-      chapter={8}
-      totalChapters={8}
-      endFrame={180}
-      scrollDistance="+=120%"
+      aria-labelledby="take-control-heading"
+      className="relative min-h-[42rem] overflow-hidden bg-surface-inverted py-24 text-white tablet:rounded-[2rem] tablet:py-32"
     >
-      <Container className="flex flex-col items-start gap-10 desktop:flex-row desktop:items-end desktop:justify-between">
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-0"
+        initial={{ scale: 1.08 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true, margin: "-120px" }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Image
+          src="/assets/radha/cinematic-v2/webp/08-final-ecosystem.webp"
+          alt=""
+          fill
+          quality={92}
+          sizes="(max-width: 767px) 220vw, 100vw"
+          loading="eager"
+          className="object-cover"
+          style={{ objectPosition: "66% 50%" }}
+        />
+      </motion.div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,25,23,0.88)_0%,rgba(28,25,23,0.58)_34%,rgba(28,25,23,0.1)_80%)]"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute right-6 top-10 z-10 font-mono text-xs uppercase tracking-[0.35em] text-white/80 tablet:right-10"
+      >
+        08 / 08
+      </span>
+
+      <Container className="relative z-10 flex flex-col items-start gap-10 desktop:flex-row desktop:items-end desktop:justify-between">
         <div>
           <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-white/70">
             Take control. Grow with RADHA.
@@ -86,6 +116,6 @@ export function TakeControlCta() {
           </div>
         </TiltCard>
       </Container>
-    </ScrollSequenceCanvas>
+    </section>
   );
 }

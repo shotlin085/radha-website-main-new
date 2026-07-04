@@ -234,7 +234,9 @@ export function ScrollSequenceCanvas({
         aria-hidden="true"
         fill
         priority={sequenceId === "01-radha-reveal"}
-        sizes="100vw"
+        loading={sequenceId === "01-radha-reveal" ? undefined : "eager"}
+        quality={92}
+        sizes="(max-width: 767px) 220vw, 100vw"
         className="object-cover"
         style={{ objectPosition: `${sequence.focalX * 100}% 50%` }}
       />

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MotionConfig } from "motion/react";
+import { SmoothScroll } from "./SmoothScroll";
 
 let registered = false;
 
@@ -37,5 +38,10 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
+  return (
+    <MotionConfig reducedMotion="user">
+      <SmoothScroll />
+      {children}
+    </MotionConfig>
+  );
 }

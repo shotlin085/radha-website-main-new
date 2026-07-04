@@ -40,8 +40,7 @@ export function SiteFooter() {
         <div>
           <RadhaWordmark className="text-ink" />
           <p className="mt-4 max-w-xs text-sm text-ink-muted">
-            Retail audits, expiry and store health — built for Indian retail
-            operations.
+            Retail audits, expiry and store health, built for Indian retail operations.
           </p>
         </div>
         {FOOTER_LINKS.map((group) => (
@@ -81,7 +80,7 @@ export function SiteFooter() {
       </Container>
       <Container className="border-t border-ink/8 py-6">
         <p className="text-xs text-ink-muted">
-          © {new Date().getFullYear()} RADHA. All rights reserved.
+          Copyright {new Date().getFullYear()} RADHA. All rights reserved.
         </p>
       </Container>
     </footer>

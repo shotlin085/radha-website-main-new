@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import { useEffect } from "react";
 import { motion } from "motion/react";
-import { ScrollSequenceCanvas } from "@/components/motion/ScrollSequenceCanvas";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { TextReveal } from "@/components/motion/TextReveal";
@@ -25,17 +26,41 @@ const PARTICLES = [
 export function HeroOpening() {
   const rail = useProgressRail();
 
+  useEffect(() => {
+    rail?.markComplete(1);
+  }, [rail]);
+
   return (
-    <ScrollSequenceCanvas
-      sequenceId="01-radha-reveal"
+    <section
       id="hero-opening"
-      ariaLabelledBy="hero-opening-heading"
-      onSectionComplete={() => rail?.markComplete(1)}
-      chapter={1}
-      totalChapters={8}
-      endFrame={150}
-      scrollDistance="+=120%"
+      aria-labelledby="hero-opening-heading"
+      className="relative min-h-dvh overflow-hidden bg-surface-inverted tablet:rounded-b-[2rem]"
     >
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-0"
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Image
+          src="/assets/radha/cinematic-v2/webp/01-hero-opening.webp"
+          alt=""
+          fill
+          priority
+          quality={92}
+          sizes="(max-width: 767px) 220vw, 100vw"
+          className="object-cover object-[72%_50%] tablet:object-[64%_50%]"
+        />
+      </motion.div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,25,23,0.86)_0%,rgba(28,25,23,0.58)_38%,rgba(28,25,23,0.12)_74%,rgba(28,25,23,0.08)_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/75 via-transparent to-transparent"
+      />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         {PARTICLES.map((particle, index) => (
           <motion.span
@@ -54,8 +79,15 @@ export function HeroOpening() {
           />
         ))}
       </div>
+      <span
+        aria-hidden="true"
+        className="absolute right-6 top-24 z-10 font-mono text-xs uppercase tracking-[0.35em] text-white mix-blend-difference tablet:right-10"
+      >
+        01 / 08
+      </span>
 
-      <Container>
+      <div className="relative z-10 flex min-h-dvh w-full flex-col justify-end pb-20 pt-32 tablet:pb-24">
+        <Container>
         <motion.div
           initial={{ opacity: 0, scale: 1.03 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -81,7 +113,8 @@ export function HeroOpening() {
             </Button>
           </div>
         </motion.div>
-      </Container>
-    </ScrollSequenceCanvas>
+        </Container>
+      </div>
+    </section>
   );
 }

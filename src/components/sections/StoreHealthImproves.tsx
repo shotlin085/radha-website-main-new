@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
@@ -53,9 +54,23 @@ export function StoreHealthImproves() {
     <section
       id="store-health-improves"
       aria-labelledby="store-health-improves-heading"
-      className="bg-surface-muted py-24 tablet:py-32"
+      className="relative overflow-hidden bg-surface-muted py-24 tablet:py-32"
     >
-      <Container className="flex flex-col items-center text-center">
+      <Image
+        src="/assets/radha/cinematic-v2/webp/07-store-health.webp"
+        alt=""
+        fill
+        quality={92}
+        sizes="(max-width: 767px) 220vw, 100vw"
+        loading="eager"
+        className="object-cover opacity-42"
+        style={{ objectPosition: "55% 50%" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,251,245,0.62),rgba(255,251,245,0.82)_54%,rgba(245,241,232,0.94)_100%)]"
+      />
+      <Container className="relative z-10 flex flex-col items-center text-center">
         <SectionHeading
           id="store-health-improves-heading"
           eyebrow="Store Health Improves"

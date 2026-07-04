@@ -1,13 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { VerificationCard } from "@/components/ui/VerificationCard";
-import { frameSrc, SEQUENCES } from "@/lib/sequences";
-
-const SEQUENCE = SEQUENCES["02-scan-product-truth"];
+import { CinematicFrame } from "@/components/ui/CinematicFrame";
 
 // Chapter 3 of 8 — second half of the "quick proof" duo with chapter 2
 // (tight top padding keeps them reading as one fast beat). Motion: card
@@ -23,16 +20,13 @@ export function VerifyWithConfidence() {
     <section id="verify-confidence" aria-labelledby="verify-confidence-heading" className="bg-surface pt-10 pb-20 tablet:pb-28">
       <Container className="grid items-center gap-10 tablet:grid-cols-2 tablet:gap-16">
         <div>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-hairline">
-            <Image
-              src={frameSrc("02-scan-product-truth", 220)}
-              alt="A verified product result shown on a phone screen"
-              fill
-              sizes="(min-width: 768px) 45vw, 90vw"
-              className="object-cover"
-              style={{ objectPosition: `${SEQUENCE.focalX * 100}% 50%` }}
-            />
-          </div>
+          <CinematicFrame
+            src="/assets/radha/cinematic-v2/webp/03-verify-confidence.webp"
+            alt="A verified product result shown on a phone screen"
+            focalX={0.52}
+            priority
+            className="aspect-[4/5]"
+          />
         </div>
 
         <div>

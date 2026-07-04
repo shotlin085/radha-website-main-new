@@ -1,4 +1,5 @@
 import { HeroOpening } from "@/components/sections/HeroOpening";
+import { OperationalProof } from "@/components/sections/OperationalProof";
 import { ScanInstantly } from "@/components/sections/ScanInstantly";
 import { VerifyWithConfidence } from "@/components/sections/VerifyWithConfidence";
 import { PreventLosses } from "@/components/sections/PreventLosses";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <main id="main-content">
         <HeroOpening />
+        <OperationalProof />
         <ScanInstantly />
         <VerifyWithConfidence />
         <PreventLosses />

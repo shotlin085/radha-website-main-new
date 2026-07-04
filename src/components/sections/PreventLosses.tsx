@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -21,9 +22,21 @@ export function PreventLosses() {
     <section
       id="prevent-losses"
       aria-labelledby="prevent-losses-heading"
-      className="bg-surface-inverted py-24 text-surface tablet:py-32"
+      className="relative overflow-hidden bg-surface-inverted py-24 text-surface tablet:py-32"
     >
-      <Container className="grid items-center gap-12 tablet:grid-cols-2 tablet:gap-16">
+      <Image
+        src="/assets/radha/cinematic-v2/webp/04-prevent-losses.webp"
+        alt=""
+        fill
+        quality={92}
+        sizes="(max-width: 767px) 220vw, 100vw"
+        loading="eager"
+        className="object-cover opacity-70"
+        style={{ objectPosition: "68% 50%" }}
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/45" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-ink/12" />
+      <Container className="relative z-10 grid items-center gap-12 tablet:grid-cols-2 tablet:gap-16">
         <SectionHeading
           id="prevent-losses-heading"
           eyebrow="Prevent Losses"

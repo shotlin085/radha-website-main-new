@@ -74,9 +74,6 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-3 desktop:flex">
-            <Button href="/contact" variant="ghost">
-              Log in
-            </Button>
             <Button href="/contact">Start with RADHA</Button>
           </div>
 

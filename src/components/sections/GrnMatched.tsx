@@ -1,13 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GrnReceiptCard } from "@/components/ui/GrnReceiptCard";
-import { frameSrc, SEQUENCES } from "@/lib/sequences";
-
-const SEQUENCE = SEQUENCES["03-retail-operations"];
+import { CinematicFrame } from "@/components/ui/CinematicFrame";
 
 // Chapter 5 of 8 — first half of the second "quick proof" duo (with
 // chapter 6). Motion: card drop-in with a small spring bounce, synced to
@@ -30,16 +27,13 @@ export function GrnMatched() {
               -bottom offset below — otherwise the absolutely-positioned
               card would overlap chapter 6 instead of just the photo. */}
           <div className="relative w-full max-w-sm pb-16 tablet:pb-20">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-hairline">
-              <Image
-                src={frameSrc("03-retail-operations", 80)}
-                alt="A store worker checking a delivery box against a receipt"
-                fill
-                sizes="(min-width: 768px) 45vw, 90vw"
-                className="object-cover"
-                style={{ objectPosition: `${SEQUENCE.focalX * 100}% 50%` }}
-              />
-            </div>
+            <CinematicFrame
+              src="/assets/radha/cinematic-v2/webp/05-grn-matched.webp"
+              alt="A store worker checking a delivery box against a receipt"
+              focalX={0.55}
+              priority
+              className="aspect-[4/5]"
+            />
             <motion.div
               initial={{ y: -40, opacity: 0, scale: 0.95 }}
               whileInView={{ y: 0, opacity: 1, scale: 1 }}
