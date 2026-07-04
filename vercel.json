@@ -2,6 +2,5 @@
   "framework": "nextjs",
   "buildCommand": "next build",
   "outputDirectory": ".next",
-  "devCommand": "next dev --port 3000",
-  "installCommand": "npm install --legacy-peer-deps"
+  "devCommand": "next dev --port 3000"
 }

@@ -7,7 +7,6 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageTransition } from "@/components/layout/PageTransition";
-import { ChatLauncher } from "@/components/chat/ChatLauncher";
 
 export const metadata: Metadata = buildMetadata();
 
@@ -28,7 +27,6 @@ export default function RootLayout({
           <SiteHeader />
           <PageTransition>{children}</PageTransition>
           <SiteFooter />
-          <ChatLauncher />
         </MotionProvider>
       </body>
     </html>
