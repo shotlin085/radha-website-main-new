@@ -11,29 +11,56 @@ import { PageTransition } from "@/components/layout/PageTransition";
 
 export const metadata: Metadata = buildMetadata();
 
-const softwareJsonLd = {
+const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "RADHA",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Android, iOS, Web",
+  "@type": "Organization",
+  name: "RADHA AI",
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  offers: {
-    "@type": "Offer",
-    category: "SaaS subscription",
+  foundingLocation: {
+    "@type": "Country",
+    name: "India",
   },
-  audience: {
-    "@type": "Audience",
-    audienceType: "Indian retail store owners and retail operations teams",
+  slogan: "AI that understands work and people",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "RADHA AI products",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        availability: "https://schema.org/PreOrder",
+        itemOffered: {
+          "@type": "SoftwareApplication",
+          name: "RADHA ISHA",
+          applicationCategory: "BusinessApplication",
+          description: "AI retail intelligence for inventory, expiry, barcode intelligence, OCR, audits, and analytics.",
+        },
+      },
+      {
+        "@type": "Offer",
+        availability: "https://schema.org/PreOrder",
+        itemOffered: {
+          "@type": "SoftwareApplication",
+          name: "RADHA VANI",
+          applicationCategory: "LifestyleApplication",
+          description: "A personal AI companion designed for meaningful conversation, reflection, and growth.",
+        },
+      },
+      {
+        "@type": "Offer",
+        availability: "https://schema.org/PreOrder",
+        itemOffered: {
+          "@type": "SoftwareApplication",
+          name: "RADHA YUGA",
+          applicationCategory: "EducationalApplication",
+          description: "Interactive learning through stories, challenges, quests, and reflective gameplay.",
+        },
+      },
+    ],
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
@@ -48,9 +75,9 @@ export default function RootLayout({
           <SiteFooter />
         </MotionProvider>
         <Script
-          id="radha-software-jsonld"
+          id="radha-ai-organization-jsonld"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </body>
     </html>

@@ -41,11 +41,11 @@
 
   --color-ink: #1c1917; /* real token — warm near-black, never pure black */
   --color-ink-muted: #57534e; /* = --ink-soft (real token, exact) */
-  --color-surface: #fffbf5; /* real token — warm cream, never flat white */
-  --color-surface-muted: #f5f1e8; /* = --surface-sunken (real token, exact) */
+  --color-surface: #f7f7f5;
+  --color-surface-muted: #efeee9;
   --color-surface-raised: #ffffff; /* = --surface-raised (real token, exact) — cards */
-  --color-surface-inverted: #1a1714; /* real token — warm dark, used sparingly (e.g. BusinessPulse), never pure black */
-  --color-hairline: #e7e1d4; /* real token — borders/dividers */
+  --color-surface-inverted: #11110f;
+  --color-hairline: #dedbd2;
   --color-accent: var(--color-brand-600);
   --color-focus-ring: var(--color-brand-600);
 
@@ -109,11 +109,6 @@
 
   body {
     background-color: var(--color-surface);
-    /* Faint paper grain — called for by the real brand system's canvas
-       spec ("warm cream, faint paper grain"). Static SVG noise, no
-       animation, ~3.5% opacity. Sections with their own background
-       (canvas chapters, dark bands) simply paint over it. */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
@@ -135,7 +130,120 @@
   }
 }
 
+@keyframes radha-ai-scanline {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  12% {
+    opacity: 0.7;
+  }
+  84% {
+    opacity: 0.42;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 720px, 0);
+  }
+}
+
 @layer utilities {
+  @keyframes radha-vani-wave {
+    0%,
+    100% {
+      opacity: 0.62;
+      transform: scaleY(0.68);
+    }
+    46% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    74% {
+      opacity: 0.78;
+      transform: scaleY(0.82);
+    }
+  }
+
+  @keyframes radha-vani-float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(
+        var(--radha-drift-x, 8px),
+        var(--radha-drift-y, -6px),
+        0
+      );
+    }
+  }
+
+  @keyframes radha-yuga-orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes radha-yuga-node {
+    0%,
+    100% {
+      border-color: rgb(0 0 0 / 0.1);
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      border-color: rgb(123 90 27 / 0.3);
+      transform: translate3d(0, -3px, 0);
+    }
+  }
+
+  .radha-vani-wave-bar {
+    animation-name: radha-vani-wave;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+
+  .radha-vani-float {
+    animation-name: radha-vani-float;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    will-change: transform;
+  }
+
+  .radha-yuga-orbit {
+    animation-name: radha-yuga-orbit;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    will-change: transform;
+  }
+
+  .radha-yuga-node {
+    animation-name: radha-yuga-node;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    will-change: transform;
+  }
+
+  .radha-ai-scanline {
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .radha-vani-wave-bar,
+    .radha-vani-float,
+    .radha-yuga-orbit,
+    .radha-yuga-node,
+    .radha-ai-scanline {
+      animation: none !important;
+      opacity: 1;
+      transform: none !important;
+    }
+  }
+
   .sr-only-focusable {
     position: absolute;
     width: 1px;

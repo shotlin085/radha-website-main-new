@@ -19,7 +19,7 @@ export function SmoothScroll() {
     }
 
     const lenis = new Lenis({
-      anchors: { offset: -88, duration: 0.9 },
+      anchors: { offset: 0, duration: 0.9 },
       gestureOrientation: "vertical",
       lerp: 0.082,
       smoothWheel: true,
@@ -50,13 +50,34 @@ export function SmoothScroll() {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      return;
-    }
+    let frameId = 0;
 
-    lenisRef.current?.scrollTo(0, { immediate: true });
-    ScrollTrigger.refresh();
+    const scrollToRouteDestination = (immediate: boolean) => {
+      const hash = window.location.hash;
+      const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+
+      if (prefersReducedMotion) {
+        if (target) target.scrollIntoView({ block: "start", behavior: "auto" });
+        else window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        ScrollTrigger.refresh();
+        return;
+      }
+
+      const lenis = lenisRef.current;
+      if (!lenis) return;
+      if (target) lenis.scrollTo(target, { offset: 0, immediate });
+      else lenis.scrollTo(0, { immediate });
+      ScrollTrigger.refresh();
+    };
+
+    frameId = requestAnimationFrame(() => scrollToRouteDestination(true));
+    const handleHashChange = () => scrollToRouteDestination(false);
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, [pathname, prefersReducedMotion]);
 
   return null;

@@ -22,15 +22,9 @@ interface ButtonAsLink extends BaseButtonProps {
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const VARIANT_CLASSES: Record<NonNullable<BaseButtonProps["variant"]>, string> = {
-  // Text-bearing solid fills use brand-700 (accent-deep), not the vivid
-  // brand-600 — white/cream text on #EA580C only hits ~3.5:1, below AA's
-  // 4.5:1 for normal text. brand-700 gives 7.3:1 and only improves on
-  // hover/active as it darkens further.
-  primary:
-    "bg-brand-700 text-surface hover:bg-brand-800 active:bg-brand-900",
-  secondary:
-    "bg-surface-muted text-ink border border-ink/10 hover:bg-brand-50",
-  ghost: "bg-transparent text-ink hover:bg-surface-muted",
+  primary: "bg-[#171510] text-white hover:bg-[#2a271f] active:bg-black",
+  secondary: "border border-black/16 bg-transparent text-ink hover:bg-black/5",
+  ghost: "bg-transparent text-ink hover:bg-black/5",
 };
 
 const BASE_CLASSES =

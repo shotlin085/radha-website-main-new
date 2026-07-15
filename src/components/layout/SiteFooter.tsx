@@ -6,27 +6,29 @@ import { Icon } from "@/components/ui/Icon";
 
 const FOOTER_LINKS = [
   {
-    heading: "Product",
+    heading: "Products",
     links: [
-      { href: "/platform", label: "Features" },
-      { href: "/pricing", label: "Pricing" },
-      { href: "/showcase", label: "See RADHA in action" },
-      { href: "/#faq", label: "FAQ" },
-    ],
-  },
-  {
-    heading: "Resources",
-    links: [
-      { href: "/contact", label: "Help center" },
-      { href: "/about", label: "Blog" },
-      { href: "/platform", label: "Guides" },
+      { href: "/platform", label: "RADHA ISHA" },
+      { href: "/#products", label: "RADHA VANI" },
+      { href: "/#products", label: "RADHA YUGA" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { href: "/about", label: "About us" },
-      { href: "/contact", label: "Contact" },
+      { href: "/#about", label: "About" },
+      { href: "/#vision", label: "Vision" },
+      { href: "/contact", label: "Careers" },
+      { href: "/contact", label: "Press" },
+      { href: "/#contact", label: "Contact" },
+    ],
+  },
+  {
+    heading: "Resources",
+    links: [
+      { href: "/about", label: "Blogs" },
+      { href: "/platform", label: "Documentation" },
+      { href: "/contact", label: "Help Center" },
       { href: "/legal/privacy", label: "Privacy" },
       { href: "/legal/terms", label: "Terms" },
     ],
@@ -35,24 +37,33 @@ const FOOTER_LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-ink/8 bg-surface-muted">
-      <Container className="grid gap-10 py-16 tablet:grid-cols-[1.4fr_1fr_1fr_1fr_1.1fr]">
+    <footer className="border-t border-black/10 bg-[#f7f7f5]">
+      <Container className="grid gap-12 py-16 tablet:py-20 desktop:grid-cols-[1.45fr_0.8fr_0.8fr_0.95fr] desktop:gap-16">
         <div>
           <RadhaWordmark className="text-ink" />
-          <p className="mt-4 max-w-xs text-sm text-ink-muted">
-            Retail audits, expiry and store health, built for Indian retail operations.
+          <p className="mt-5 max-w-sm text-sm leading-6 text-ink-muted">
+            Building intelligent products inspired by timeless wisdom, for businesses, people, and the
+            knowledge we carry forward.
           </p>
+          <div className="mt-7 flex flex-col text-sm text-ink-muted">
+            <a href="mailto:hello@radha.app" className="inline-flex items-center gap-2 py-2 hover:text-ink">
+              <Icon icon={Mail} size={16} />
+              hello@radha.app
+            </a>
+            <a href="tel:+18001237890" className="inline-flex items-center gap-2 py-2 hover:text-ink">
+              <Icon icon={Phone} size={16} />
+              1800 123 7890
+            </a>
+          </div>
         </div>
+
         {FOOTER_LINKS.map((group) => (
           <nav key={group.heading} aria-label={group.heading}>
-            <h2 className="mb-4 text-sm font-semibold text-ink">{group.heading}</h2>
+            <h2 className="mb-3 text-sm font-semibold text-ink">{group.heading}</h2>
             <ul className="flex flex-col">
               {group.links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="block py-3 text-sm text-ink-muted hover:text-ink"
-                  >
+                <li key={`${group.heading}-${link.label}`}>
+                  <Link href={link.href} className="block py-2.5 text-sm text-ink-muted hover:text-ink">
                     {link.label}
                   </Link>
                 </li>
@@ -60,28 +71,11 @@ export function SiteFooter() {
             </ul>
           </nav>
         ))}
-        <div>
-          <h2 className="mb-4 text-sm font-semibold text-ink">We&apos;re here to help</h2>
-          <ul className="flex flex-col text-sm text-ink-muted">
-            <li>
-              <a href="tel:+18001237890" className="inline-flex items-center gap-2 py-3 hover:text-ink">
-                <Icon icon={Phone} size={16} />
-                1800 123 7890
-              </a>
-            </li>
-            <li>
-              <a href="mailto:hello@radha.app" className="inline-flex items-center gap-2 py-3 hover:text-ink">
-                <Icon icon={Mail} size={16} />
-                hello@radha.app
-              </a>
-            </li>
-          </ul>
-        </div>
       </Container>
-      <Container className="border-t border-ink/8 py-6">
-        <p className="text-xs text-ink-muted">
-          Copyright {new Date().getFullYear()} RADHA. All rights reserved.
-        </p>
+
+      <Container className="flex flex-col gap-3 border-t border-black/10 py-6 text-xs text-ink-muted tablet:flex-row tablet:items-center tablet:justify-between">
+        <p>Copyright {new Date().getFullYear()} RADHA AI. All rights reserved.</p>
+        <p>Meaningful intelligence, built responsibly in India.</p>
       </Container>
     </footer>
   );

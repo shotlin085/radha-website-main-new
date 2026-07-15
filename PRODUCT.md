@@ -6,28 +6,31 @@ brand
 
 ## Users
 
-Indian retail store owners, managers, and operations teams who need a clear way to audit shelves, verify products, track expiry risk, record GRN, assign staff tasks, and understand store health without adopting a full ERP or POS system.
+Future-ready Indian businesses, individuals seeking thoughtful AI support, learners interested in timeless wisdom, beta partners, and collaborators evaluating RADHA AI and its product ecosystem.
 
 ## Product Purpose
 
-RADHA is a retail audit and store health platform for Indian retail. The website should make the product feel trustworthy, premium, practical, and easy to understand: scan products, verify truth, prevent losses, assign work, and grow store control.
+RADHA AI is the parent company for three focused products: RADHA ISHA for retail intelligence, RADHA VANI for meaningful AI companionship, and RADHA YUGA for interactive learning. The website should explain one shared mission while giving every product a distinct, memorable visual world.
 
 ## Brand Personality
 
-Warm, operational, cinematic.
+Purposeful, precise, humane, quietly ambitious.
 
-## Anti-references
+## Visual Direction
 
-Avoid generic SaaS landing pages, blurry placeholder art, childish mascot usage, weak stock-like imagery, over-carded layouts, decorative motion with no product meaning, and fake product packaging that looks unreadable or cheap.
+Apple-inspired restraint with black typography, true neutral surfaces, khaki and saffron accents, large spacing, modern icons, and cinematic motion that explains the story. No stock photography, fake dashboards, blurry imagery, decorative gradients, or over-carded layouts.
 
 ## Design Principles
 
-- Show store reality first: use Indian retail scenes, product shelves, owner workflows, and RADHA UI moments instead of abstract decoration.
-- Make trust visible: product verification, audit trails, expiry checks, and store-health signals should be easy to understand at a glance.
-- Keep Mor premium and consistent: the mascot supports the story, but never overwhelms the owner or product workflow.
-- Build for mobile confidence: every page must feel polished at phone width because the product itself is mobile-first.
-- Motion should explain flow: animation should guide attention from scan to verification to action, not simply make elements move.
+- Lead with RADHA AI as the first-viewport brand signal.
+- Give RADHA ISHA, VANI, and YUGA distinct product worlds connected by one visual system.
+- Use motion to reveal relationships and product intent, never as background noise.
+- Keep copy direct, specific, and human.
+- Build for mobile confidence, keyboard navigation, reduced motion, and WCAG AA contrast.
+- Preserve the detailed retail product routes as the RADHA ISHA destination.
 
-## Accessibility & Inclusion
+## Product Timeline
 
-Target WCAG AA contrast, keyboard navigation, meaningful alt text, responsive layouts without horizontal overflow, and reduced-motion-friendly animation. Keep copy direct and readable for busy store operators.
+- 2026: RADHA ISHA, AI Retail Intelligence.
+- 2026: RADHA VANI, AI Companion.
+- 2027: RADHA YUGA, Interactive Learning Platform.
