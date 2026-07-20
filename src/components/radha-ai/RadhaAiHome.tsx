@@ -20,7 +20,6 @@ import {
   Search,
   ShieldCheck,
   Smartphone,
-  Sparkles,
   Workflow,
   AtSign,
   Video,
@@ -32,8 +31,9 @@ import { Icon } from "@/components/ui/Icon";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/StaggerGroup";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { GoldenFlowField } from "@/components/radha-ai/GoldenFlowField";
+import { CinematicHero } from "@/components/radha-ai/CinematicHero";
 import { ProductWorlds } from "@/components/radha-ai/ProductWorlds";
+import { FounderPause } from "@/components/radha-ai/FounderPause";
 
 const PRINCIPLES = [
   ["01", "Solve a real problem", "Start with lived experience, not technology looking for a use."],
@@ -69,7 +69,7 @@ const TECHNOLOGIES: Array<{
 
 const ROADMAP = [
   { year: "2026", product: "RADHA ISHA", description: "Retail Intelligence Platform", status: "Launching" },
-  { year: "2026", product: "RADHA VANI", description: "AI Companion Platform", status: "Launching" },
+  { year: "2027", product: "RADHA VANI", description: "AI Companion Platform", status: "Coming" },
   { year: "2027", product: "RADHA YUGA", description: "Interactive Learning Platform", status: "Coming" },
   { year: "Future", product: "One meaningful idea", description: "A focused answer to a real human problem", status: "Continuing" },
 ];
@@ -83,7 +83,7 @@ const FAQS = [
   {
     question: "What products are currently available?",
     answer:
-      "RADHA ISHA and RADHA VANI are planned for 2026. RADHA YUGA is planned for 2027. Beta access will open in stages as each product reaches its testing milestone.",
+      "RADHA ISHA is planned for 2026. RADHA VANI and RADHA YUGA are planned for 2027. Beta access will open in stages as each product reaches its testing milestone.",
   },
   {
     question: "How is RADHA different?",
@@ -140,53 +140,54 @@ export function RadhaAiHome() {
       <section
         id="home"
         aria-labelledby="home-heading"
-        className="relative flex min-h-[100svh] scroll-mt-24 flex-col overflow-hidden bg-[#f7f7f5] pt-20"
+        className="relative flex min-h-[100svh] scroll-mt-24 flex-col overflow-hidden bg-[#090908] pt-20 text-white"
       >
-        <GoldenFlowField />
+        <CinematicHero />
         <Container className="relative z-10 flex flex-1 items-center py-10 tablet:py-28 desktop:py-32">
           <div className="max-w-[78rem]">
-            <p className="mb-5 flex items-center gap-3 text-sm font-semibold text-[#7a5515] tablet:mb-8">
-              <span className="h-px w-10 bg-[#b17b21]" aria-hidden="true" />
+            <p className="mb-5 flex items-center gap-3 text-sm font-semibold text-[#e8ba5a] tablet:mb-8">
+              <span className="h-px w-10 bg-[#e8ba5a]" aria-hidden="true" />
               RADHA AI · INDIA
             </p>
             <h1
               id="home-heading"
-              className="max-w-[18ch] text-balance text-[2.75rem] font-semibold leading-[0.98] tracking-normal text-[#121212] tablet:text-[4rem] desktop:text-[5.5rem] wide:text-[6rem]"
+              className="max-w-[18ch] text-balance text-[2.75rem] font-semibold leading-[0.98] tracking-normal text-white tablet:text-[4rem] desktop:text-[5.5rem] wide:text-[6rem]"
             >
               <span className="sr-only">RADHA AI: </span>
               AI That Understands Work.
-              <span className="mt-2 block text-[#9a6818]">AI That Understands People.</span>
+              <span className="mt-2 block text-[#e8b952]">AI That Understands People.</span>
             </h1>
-            <p className="mt-6 max-w-3xl text-pretty text-base leading-7 text-[#3f3d37] tablet:mt-9 tablet:text-xl tablet:leading-9">
-              RADHA AI builds intelligent products that simplify business operations, support meaningful
-              human conversations, and make timeless knowledge accessible through modern technology.
+            <p className="mt-6 max-w-3xl text-pretty text-base leading-7 text-white/74 tablet:mt-9 tablet:text-xl tablet:leading-9">
+              Retail intelligence. A thoughtful companion. An interactive learning world.
             </p>
             <div className="mt-8 flex flex-wrap gap-2 tablet:mt-10 tablet:gap-3">
-              <Button href="/#contact">
-                Get started <ArrowRight size={16} aria-hidden="true" />
+              <Button href="/#contact" className="bg-[#e4ad42] text-[#171510] hover:bg-[#f0c76f] active:bg-[#cd9630]">
+                Get early access <ArrowRight size={16} aria-hidden="true" />
               </Button>
-              <Button href="/#products" variant="secondary">
+              <Button href="/#products" variant="secondary" className="border-white/32 text-white hover:bg-white/12">
                 Explore products <ArrowDown size={16} aria-hidden="true" />
               </Button>
             </div>
           </div>
         </Container>
 
-        <div className="relative z-10 border-t border-black/10 bg-[#efeee9]/88 backdrop-blur-sm">
+        <div className="relative z-10 border-t border-white/12 bg-black/42 backdrop-blur-sm">
           <Container className="flex min-h-24 items-center justify-between gap-6 py-5">
-            <p className="text-sm font-medium text-ink-muted tablet:text-base">
+            <p className="text-sm font-medium text-white/70 tablet:text-base">
               Trusted by future-ready businesses and individuals.
             </p>
-            <div className="hidden items-center gap-4 text-xs font-semibold text-black/36 tablet:flex" aria-hidden="true">
-              <span>BUSINESS</span>
-              <span className="h-1 w-1 rounded-full bg-[#b17b21]" />
-              <span>PEOPLE</span>
-              <span className="h-1 w-1 rounded-full bg-[#b17b21]" />
-              <span>KNOWLEDGE</span>
+            <div className="hidden items-center gap-4 text-xs font-semibold text-white/46 tablet:flex" aria-hidden="true">
+              <span>ISHA</span>
+              <span className="h-1 w-1 rounded-full bg-[#e8ba5a]" />
+              <span>VANI</span>
+              <span className="h-1 w-1 rounded-full bg-[#e8ba5a]" />
+              <span>YUGA</span>
             </div>
           </Container>
         </div>
       </section>
+
+      <ProductWorlds />
 
       <section id="about" aria-labelledby="about-heading" className="scroll-mt-24 bg-white py-24 tablet:py-36">
         <Container>
@@ -223,8 +224,6 @@ export function RadhaAiHome() {
         </Container>
       </section>
 
-      <ProductWorlds />
-
       <section id="vision" aria-labelledby="vision-heading" className="scroll-mt-24 bg-[#11110f] py-24 text-white tablet:py-36">
         <Container>
           <ScrollReveal>
@@ -236,6 +235,9 @@ export function RadhaAiHome() {
                 Why we exist.
               </h2>
               <div className="max-w-3xl">
+                <p className="text-balance text-2xl font-semibold leading-tight text-[#ddb259] tablet:text-4xl">
+                  Building AI that helps businesses, supports people, and preserves knowledge.
+                </p>
                 <p className="mb-4 text-lg font-medium text-white/58">
                   Technology should never replace humanity.
                 </p>
@@ -314,10 +316,11 @@ export function RadhaAiHome() {
 
           <div className="relative mt-20">
             <div className="absolute left-5 top-5 h-[calc(100%-2.5rem)] w-px bg-black/12 desktop:left-0 desktop:right-0 desktop:top-5 desktop:h-px desktop:w-auto" aria-hidden="true" />
+            <span className="radha-approach-beam pointer-events-none absolute left-0 top-5 hidden h-px w-[17%] bg-[linear-gradient(90deg,transparent,rgba(203,145,36,0.95),transparent)] shadow-[0_0_14px_rgba(203,145,36,0.65)] desktop:block" aria-hidden="true" />
             <StaggerGroup className="grid gap-10 desktop:grid-cols-7 desktop:gap-5">
               {APPROACH.map(([ApproachIcon, title, description], index) => (
-                <StaggerItem key={title} className="relative grid grid-cols-[2.5rem_1fr] gap-5 desktop:block">
-                  <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#171510] text-[#e0b158]">
+                <StaggerItem key={title} className="group relative grid grid-cols-[2.5rem_1fr] gap-5 desktop:block">
+                  <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#171510] text-[#e0b158] transition-[transform,box-shadow] duration-500 group-hover:scale-110 group-hover:shadow-[0_0_0_7px_rgba(224,177,88,0.16)]">
                     <ApproachIcon size={17} aria-hidden="true" />
                   </div>
                   <div className="desktop:mt-8">
@@ -436,65 +439,32 @@ export function RadhaAiHome() {
             />
           </ScrollReveal>
 
-          <StaggerGroup className="mt-20 grid border-y border-black/12 desktop:grid-cols-4">
-            {ROADMAP.map((milestone, index) => (
-              <StaggerItem
-                key={`${milestone.year}-${milestone.product}`}
-                className={`py-8 desktop:min-h-72 desktop:px-8 desktop:py-10 ${
-                  index > 0 ? "border-t border-black/12 desktop:border-l desktop:border-t-0" : ""
-                }`}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-3xl font-semibold tracking-normal text-[#9a6818]">{milestone.year}</p>
-                  <span className="rounded-full bg-[#e8e1d1] px-3 py-1 text-xs font-semibold text-[#6e4b11]">
-                    {milestone.status}
-                  </span>
-                </div>
-                <h3 className="mt-12 text-xl font-semibold text-ink">{milestone.product}</h3>
-                <p className="mt-3 text-sm leading-6 text-ink-muted">{milestone.description}</p>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+          <div className="relative mt-20 overflow-hidden">
+            <span className="radha-roadmap-beam pointer-events-none absolute left-0 top-0 z-10 hidden h-px w-[22%] bg-[linear-gradient(90deg,transparent,rgba(203,145,36,0.98),transparent)] shadow-[0_0_16px_rgba(203,145,36,0.7)] desktop:block" aria-hidden="true" />
+            <StaggerGroup className="grid border-y border-black/12 desktop:grid-cols-4">
+              {ROADMAP.map((milestone, index) => (
+                <StaggerItem
+                  key={`${milestone.year}-${milestone.product}`}
+                  className={`group relative py-8 transition-colors duration-500 hover:bg-white/72 desktop:min-h-72 desktop:px-8 desktop:py-10 ${
+                    index > 0 ? "border-t border-black/12 desktop:border-l desktop:border-t-0" : ""
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-3xl font-semibold tracking-normal text-[#9a6818]">{milestone.year}</p>
+                    <span className="rounded-full bg-[#e8e1d1] px-3 py-1 text-xs font-semibold text-[#6e4b11] transition-colors duration-300 group-hover:bg-[#171510] group-hover:text-[#e8c36c]">
+                      {milestone.status}
+                    </span>
+                  </div>
+                  <h3 className="mt-12 text-xl font-semibold text-ink">{milestone.product}</h3>
+                  <p className="mt-3 text-sm leading-6 text-ink-muted">{milestone.description}</p>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          </div>
         </Container>
       </section>
 
-      <section aria-labelledby="founder-heading" className="bg-white py-24 tablet:py-36">
-        <Container>
-          <ScrollReveal>
-            <div className="grid gap-14 desktop:grid-cols-[0.72fr_1.28fr] desktop:gap-24">
-              <div>
-                <p className="text-sm font-semibold text-[#8a6019]">The founder&apos;s perspective</p>
-                <h2 id="founder-heading" className="mt-5 text-balance text-4xl font-semibold leading-[1.04] tracking-normal text-ink tablet:text-6xl">
-                  Meet the Founder
-                </h2>
-              </div>
-              <div className="max-w-3xl">
-                <blockquote className="text-balance text-3xl font-semibold leading-tight tracking-normal text-ink tablet:text-5xl">
-                  “The best products are created by people who have experienced the problem firsthand.”
-                </blockquote>
-                <div className="mt-10 max-w-2xl space-y-5 text-lg leading-8 text-ink-muted">
-                  <p>
-                    Years of leading retail operations and observing everyday business challenges shaped the
-                    first RADHA AI product.
-                  </p>
-                  <p>
-                    That experience became a broader mission: improve business operations, strengthen human
-                    connections, and make knowledge more accessible through artificial intelligence people can trust.
-                  </p>
-                </div>
-                <div className="mt-12 flex items-center gap-4 border-t border-black/12 pt-6">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#171510] text-[#e1b55b]">
-                    <Sparkles size={18} aria-hidden="true" />
-                  </span>
-                  <p className="text-sm font-medium text-ink-muted">
-                    The mission is to build meaningful artificial intelligence, not another software catalogue.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </Container>
-      </section>
+      <FounderPause />
 
       <section id="faq" aria-labelledby="faq-heading" className="bg-[#f7f7f5] py-24 tablet:py-36">
         <Container className="grid gap-14 desktop:grid-cols-[0.72fr_1.28fr] desktop:gap-24">

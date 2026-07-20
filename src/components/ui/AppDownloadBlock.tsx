@@ -1,11 +1,11 @@
+import Link from "next/link";
 import { PlayCircle, Smartphone } from "lucide-react";
 import { Icon } from "@/components/ui/Icon";
 
 // Static, deterministic pseudo-QR pattern — visual only (not a real
 // scannable code), generated inline as SVG rather than an external image.
-// Store badges are labeled buttons, not scraped Google Play / App Store
-// logo assets, to avoid trademark-asset issues while still reading clearly
-// as store links.
+// Public store listings are not available yet, so the badges lead to the
+// beta contact path instead of pretending to be live store downloads.
 const QR_CELLS: [number, number][] = [
   [0, 0], [1, 0], [2, 0], [6, 0], [7, 0], [8, 0],
   [0, 1], [2, 1], [6, 1], [8, 1],
@@ -29,20 +29,22 @@ export function AppDownloadBlock() {
         </svg>
       </div>
       <div className="flex flex-col gap-2">
-        <a
-          href="#"
+        <Link
+          href="/#contact"
+          aria-label="Request Android beta access"
           className="flex min-h-11 items-center gap-2 rounded-lg border border-hairline bg-surface-raised px-4 text-xs font-medium text-ink transition-colors hover:bg-surface-muted"
         >
           <Icon icon={PlayCircle} size={16} />
-          Get it on Google Play
-        </a>
-        <a
-          href="#"
+          Request Android beta
+        </Link>
+        <Link
+          href="/#contact"
+          aria-label="Request iPhone beta access"
           className="flex min-h-11 items-center gap-2 rounded-lg border border-hairline bg-surface-raised px-4 text-xs font-medium text-ink transition-colors hover:bg-surface-muted"
         >
           <Icon icon={Smartphone} size={16} />
-          Download on the App Store
-        </a>
+          Request iPhone beta
+        </Link>
       </div>
     </div>
   );

@@ -96,7 +96,7 @@ export function MobileNav({ open, onClose, links, triggerRef }: MobileNavProps) 
         ))}
         <div className="mt-6 flex flex-col gap-2 border-t border-black/10 px-3 pt-6">
           <Button href="/#contact" variant="secondary" className="w-full" onClick={onClose}>
-            Get started
+            Get early access
           </Button>
           <Button href="/#contact" className="w-full" onClick={onClose}>
             Join beta

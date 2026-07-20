@@ -38,7 +38,7 @@ const FOOTER_LINKS = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-black/10 bg-[#f7f7f5]">
-      <Container className="grid gap-12 py-16 tablet:py-20 desktop:grid-cols-[1.45fr_0.8fr_0.8fr_0.95fr] desktop:gap-16">
+      <Container className="grid gap-12 py-16 tablet:py-20 desktop:grid-cols-[1.45fr_0.8fr_0.8fr_0.8fr_0.8fr] desktop:gap-12">
         <div>
           <RadhaWordmark className="text-ink" />
           <p className="mt-5 max-w-sm text-sm leading-6 text-ink-muted">
@@ -71,6 +71,13 @@ export function SiteFooter() {
             </ul>
           </nav>
         ))}
+
+        <section aria-labelledby="social-heading">
+          <h2 id="social-heading" className="mb-3 text-sm font-semibold text-ink">Social</h2>
+          <p className="max-w-40 text-sm leading-6 text-ink-muted">
+            Official LinkedIn, Instagram, and YouTube channels will open with beta access.
+          </p>
+        </section>
       </Container>
 
       <Container className="flex flex-col gap-3 border-t border-black/10 py-6 text-xs text-ink-muted tablet:flex-row tablet:items-center tablet:justify-between">

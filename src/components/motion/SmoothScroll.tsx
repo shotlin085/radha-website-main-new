@@ -64,7 +64,12 @@ export function SmoothScroll() {
       }
 
       const lenis = lenisRef.current;
-      if (!lenis) return;
+      if (!lenis) {
+        if (target) target.scrollIntoView({ block: "start", behavior: "auto" });
+        else window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        ScrollTrigger.refresh();
+        return;
+      }
       if (target) lenis.scrollTo(target, { offset: 0, immediate });
       else lenis.scrollTo(0, { immediate });
       ScrollTrigger.refresh();

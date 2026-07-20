@@ -147,7 +147,125 @@
   }
 }
 
+@keyframes radha-hero-halo {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+  50% {
+    opacity: 0.66;
+    transform: translate(-50%, -50%) scale(1.28);
+  }
+}
+
+@keyframes radha-hero-particle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.5);
+  }
+  28% {
+    opacity: 0.88;
+  }
+  60% {
+    opacity: 0.3;
+    transform: translate3d(10px, -18px, 0) scale(1);
+  }
+}
+
+@keyframes radha-cinematic-image {
+  0%,
+  100% {
+    transform: scale(1.02) translate3d(-0.4%, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(0.8%, -0.8%, 0);
+  }
+}
+
+@keyframes radha-approach-beam {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(680%);
+    opacity: 0;
+  }
+}
+
+@keyframes radha-roadmap-beam {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(460%);
+    opacity: 0;
+  }
+}
+
 @layer utilities {
+  .product-chapter-layout {
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "visual"
+      "details";
+    gap: 2.5rem;
+  }
+
+  .product-chapter-intro {
+    grid-area: intro;
+  }
+
+  .product-chapter-visual {
+    grid-area: visual;
+    min-width: 0;
+  }
+
+  .product-chapter-details {
+    grid-area: details;
+  }
+
+  @media (min-width: 1180px) {
+    .product-chapter-layout {
+      grid-template-areas:
+        "intro visual"
+        "details visual";
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      grid-template-rows: auto 1fr;
+      align-items: center;
+      column-gap: 4rem;
+      row-gap: 0;
+    }
+
+    .product-chapter-layout-reverse {
+      grid-template-areas:
+        "visual intro"
+        "visual details";
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    }
+
+    .product-chapter-visual {
+      align-self: center;
+      grid-row: 1 / span 2;
+    }
+  }
+
   @keyframes radha-vani-wave {
     0%,
     100% {
@@ -199,6 +317,15 @@
     }
   }
 
+  @keyframes radha-yuga-route {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -144;
+    }
+  }
+
   .radha-vani-wave-bar {
     animation-name: radha-vani-wave;
     animation-iteration-count: infinite;
@@ -228,7 +355,44 @@
     will-change: transform;
   }
 
+  .radha-yuga-route {
+    stroke-dasharray: 18 18;
+    animation: radha-yuga-route 5.8s linear infinite;
+    will-change: stroke-dashoffset;
+  }
+
   .radha-ai-scanline {
+    will-change: transform, opacity;
+  }
+
+  .radha-hero-halo {
+    animation: radha-hero-halo 5.4s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .radha-hero-signal {
+    box-shadow: 0 0 0 7px rgb(240 189 88 / 0.12), 0 0 38px rgb(240 189 88 / 0.75);
+  }
+
+  .radha-hero-particle {
+    animation-name: radha-hero-particle;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    will-change: transform, opacity;
+  }
+
+  .radha-cinematic-image {
+    animation: radha-cinematic-image 18s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .radha-approach-beam {
+    animation: radha-approach-beam 7.8s linear infinite;
+    will-change: transform, opacity;
+  }
+
+  .radha-roadmap-beam {
+    animation: radha-roadmap-beam 8.6s linear infinite;
     will-change: transform, opacity;
   }
 
@@ -237,7 +401,13 @@
     .radha-vani-float,
     .radha-yuga-orbit,
     .radha-yuga-node,
-    .radha-ai-scanline {
+    .radha-yuga-route,
+    .radha-ai-scanline,
+    .radha-hero-halo,
+    .radha-hero-particle,
+    .radha-cinematic-image,
+    .radha-approach-beam,
+    .radha-roadmap-beam {
       animation: none !important;
       opacity: 1;
       transform: none !important;
